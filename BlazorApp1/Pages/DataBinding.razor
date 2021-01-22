@@ -1,0 +1,25 @@
+﻿@page "/DataBinding"
+@inherits DataBindingBase
+<h3>DataBinding</h3>
+
+<div>
+    <b>Name :</b> @Name
+</div><div>
+    <b>Name with salutation:</b>  @(Gender == "Male" ? $"Mr. {Name}" : $"Miss. {Name}")
+</div>
+<div>
+    <b>Name :</b><input value="@Name" @onchange="@(e => { Name = e.Value.ToString(); })" />
+</div>
+
+<div>
+    <b>Name :</b> <input @bind="Name" @bind:event="oninput" />
+</div>
+
+<hr>
+<div>
+    <textarea @bind="Description" @bind:event="oninput" />
+</div>
+<div>
+    Count : @Description.Length
+</div>
+
